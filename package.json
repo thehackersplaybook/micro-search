@@ -1,0 +1,55 @@
+{
+  "name": "micro-search",
+  "version": "1.0.0",
+  "description": "Blazing fast text search for Node JS. Just blaze it! 🔥",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "test": "vitest",
+    "lint": "eslint . --ext .ts",
+    "benchmark": "ts-node benchmarks/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thehackersplaybook/micro-search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thehackersplaybook/micro-search/issues"
+  },
+  "homepage": "https://github.com/thehackersplaybook/micro-search#readme",
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "chalk": "^5.4.1",
+    "dotenv": "^17.2.0",
+    "eslint": "^9.31.0",
+    "fast-glob": "^3.3.3",
+    "flexsearch": "^0.8.205",
+    "fs-extra": "^11.3.0",
+    "fuse.js": "^7.1.0",
+    "gray-matter": "^4.0.3",
+    "jest": "^30.0.4",
+    "json2csv": "^6.0.0-alpha.2",
+    "minisearch": "^7.1.2",
+    "ora": "^8.2.0",
+    "prettier": "^3.6.2",
+    "remark": "^15.0.1",
+    "remark-stringify": "^11.0.0",
+    "strip-markdown": "^6.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "unified": "^11.0.5",
+    "vitest": "^3.2.4",
+    "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4"
+  }
+}
