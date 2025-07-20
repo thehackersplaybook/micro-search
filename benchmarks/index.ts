@@ -38,8 +38,8 @@ async function runBenchmark() {
   const datasetSize = documents.length;
   info('benchmark', `Loaded ${datasetSize} documents.`);
 
-  // --- micro-search benchmark ---
-  info('benchmark', 'Running micro-search benchmark...');
+  // --- @microsearch/lightning benchmark ---
+  info('benchmark', 'Running @microsearch/lightning benchmark...');
   clearIndex(); // Clear index before adding documents
   await addDocumentsFromPath(docsPath);
 
@@ -61,7 +61,7 @@ async function runBenchmark() {
   const microSearchMemoryUsageMB = process.memoryUsage().heapUsed / 1024 / 1024;
 
   allResults.push({
-    library: 'micro-search',
+    library: '@microsearch/lightning',
     datasetSize,
     avgLatency: microSearchAvgLatency,
     medianLatency: microSearchMedianLatency,
@@ -69,7 +69,7 @@ async function runBenchmark() {
     memoryUsageMB: microSearchMemoryUsageMB,
     timestamp: new Date().toISOString(),
   });
-  info('benchmark', 'micro-search results:', allResults[0]);
+  info('benchmark', '@microsearch/lightning results:', allResults[0]);
 
   // --- MiniSearch benchmark ---
   info('benchmark', 'Running MiniSearch benchmark...');

@@ -10,7 +10,7 @@ import config from '../src/config/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe('micro-search', () => {
+describe('@microsearch/lightning', () => {
   const testDataDir = path.join(__dirname, '../benchmarks/data/markdown');
 
   beforeAll(async () => {

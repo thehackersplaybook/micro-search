@@ -1,10 +1,10 @@
-# 📦 micro-search
+# ⚡ @microsearch/lightning
 
-> The project 'microsearch' is a product of "The Hackers Playbook Labs" and is created to advance human consciousness through a combination of programming and mindfulness.
+> Lightning fast text search for Node.js - blazing fast markdown and text search engine
 
 ## 🚀 Overview
 
-`micro-search` is a native, in-memory Node.js/TypeScript text search engine designed for Markdown or plain text documents. It aims to provide blazing-fast keyword and phrase search across large datasets (up to 1GB RAM), delivering accurate, ranked search results in **<100ms** per query on modern hardware.
+`@microsearch/lightning` is a native, in-memory Node.js/TypeScript text search engine designed for Markdown or plain text documents. It aims to provide blazing-fast keyword and phrase search across large datasets (up to 1GB RAM), delivering accurate, ranked search results in **<100ms** per query on modern hardware.
 
 ## ✨ Features
 
@@ -40,10 +40,16 @@ microsearch/
 
 ## ⚙️ Installation
 
+```bash
+npm install @microsearch/lightning
+```
+
+### Development Installation
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/thehackersplaybook/micro-search.git
-   cd micro-search
+   git clone https://github.com/microsearch/lightning.git
+   cd lightning
    ```
 2. Install dependencies:
    ```bash
@@ -52,7 +58,18 @@ microsearch/
 
 ## 🚀 Usage
 
-### Configuration
+```javascript
+import { search, addDocumentsFromPath } from '@microsearch/lightning';
+
+// Load and index documents
+await addDocumentsFromPath('./docs');
+
+// Search for documents
+const results = await search('your search query');
+console.log(results);
+```
+
+## ⚙️ Configuration
 
 Configure the project by modifying the `.env` file in the root directory. A sample `.env` is provided:
 
