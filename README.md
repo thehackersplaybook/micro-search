@@ -174,7 +174,7 @@ MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## 🏢 About
 
-@microsearch/lightning is developed by [The Hackers Playbook Labs](https://thehackersplaybook.com) as part of the Microsearch ecosystem. Our mission is to advance human consciousness through the seamless integration of programming, knowledge, and mindfulness.
+@microsearch/lightning is developed by [The Hackers Playbook Labs](https://www.thehackersplaybook.org) as part of the Microsearch ecosystem. Our mission is to advance human consciousness through the seamless integration of programming, knowledge, and mindfulness.
 
 **Learn More:**
 - 🌐 Website: [microsearch.io](https://microsearch.io)
