@@ -1,6 +1,6 @@
 {
   "name": "@microsearch/lightning",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Lightning fast text search for Node.js - blazing fast markdown and text search engine ⚡",
   "type": "module",
   "main": "dist/src/index.js",
