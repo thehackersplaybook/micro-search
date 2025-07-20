@@ -4,7 +4,21 @@ import tseslint from "typescript-eslint";
 
 export default [
   {
-    languageOptions: { globals: globals.browser },
+    ignores: [
+      'dist/**/*',
+      'node_modules/**/*',
+      'coverage/**/*',
+      '**/*.js',
+      '!eslint.config.js'
+    ]
+  },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser
+      }
+    }
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,

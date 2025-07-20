@@ -1,31 +1,58 @@
-import { SearchDocument } from '../core/search';
 import fs from 'fs-extra';
 import path from 'path';
-import fastglob from 'fast-glob';
+import glob from 'fast-glob';
+import matter from 'gray-matter';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
-import strip from 'strip-markdown';
-import matter from 'gray-matter';
+import stripMarkdown from 'strip-markdown';
+import { SearchDocument } from '../core/search.js';
+import { info } from '../logger/index.js';
 
-export async function loadDocuments(rootDir: string): Promise<SearchDocument[]> {
-  const files = await fastglob('**/*.md', { cwd: rootDir });
-  const documents = [];
+/**
+ * Converts Markdown to plain text
+ * @param markdown Markdown content
+ * @returns Plain text
+ */
+async function markdownToText(markdown: string): Promise<string> {
+  const result = await unified().use(remarkParse).use(stripMarkdown).use(remarkStringify).process(markdown);
+
+  return String(result);
+}
+
+/**
+ * Loads documents from a directory
+ * @param rootPath Root directory path
+ * @returns Array of SearchDocument objects
+ */
+export async function loadDocuments(rootPath: string): Promise<SearchDocument[]> {
+  const documents: SearchDocument[] = [];
+  const absolutePath = path.resolve(rootPath);
+
+  info('file', `Loading documents from ${absolutePath}`);
+
+  // Find all markdown files
+  const files = await glob('**/*.md', {
+    cwd: absolutePath,
+    absolute: true,
+  });
+
+  info('file', `Found ${files.length} markdown files`);
 
   for (const file of files) {
-    const filePath = path.join(rootDir, file);
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-    const textContent = await unified()
-      .use(remarkParse)
-      .use(strip)
-      .use(remarkStringify)
-      .process(content);
+    const relativePath = path.relative(absolutePath, file);
+    const content = await fs.readFile(file, 'utf-8');
+
+    // Parse frontmatter
+    const { data, content: markdownContent } = matter(content);
+    const plainText = await markdownToText(markdownContent);
 
     documents.push({
-      id: filePath,
+      id: relativePath,
       title: data.title || path.basename(file, '.md'),
-      content: String(textContent),
+      content: plainText,
+      path: relativePath,
+      ...data, // Include all frontmatter data
     });
   }
 

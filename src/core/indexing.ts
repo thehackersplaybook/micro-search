@@ -1,69 +1,111 @@
-import { SearchDocument } from './search';
+import { SearchDocument } from './search.js';
+import { tokenize } from './tokenizer.js';
+import config from '../config/index.js';
 
-let index = new Map<string, Map<string | number, number>>();
-let documents = new Map<string | number, SearchDocument>();
+interface DocumentFrequency {
+  [term: string]: number;
+}
 
-export function indexDocument(doc: SearchDocument): void {
-  documents.set(doc.id, doc);
-  const tokens = tokenize(doc.content);
-  const termFrequencies = new Map<string, number>();
+interface TermFrequency {
+  [term: string]: number;
+}
 
-  for (const token of tokens) {
-    termFrequencies.set(token, (termFrequencies.get(token) || 0) + 1);
+interface DocumentTerms {
+  [docId: string]: TermFrequency;
+}
+
+class SearchIndex {
+  private documents: Map<string | number, SearchDocument>;
+  private documentTerms: DocumentTerms;
+  private documentFrequencies: DocumentFrequency;
+  private totalDocuments: number;
+
+  constructor() {
+    this.documents = new Map();
+    this.documentTerms = {};
+    this.documentFrequencies = {};
+    this.totalDocuments = 0;
   }
 
-  for (const [token, freq] of termFrequencies.entries()) {
-    if (!index.has(token)) {
-      index.set(token, new Map());
+  public indexDocument(doc: SearchDocument): void {
+    this.documents.set(doc.id, doc);
+    this.totalDocuments++;
+
+    // Calculate term frequencies for title and content
+    const titleTokens = tokenize(doc.title);
+    const contentTokens = tokenize(doc.content);
+    const docId = String(doc.id);
+
+    // Initialize document terms
+    this.documentTerms[docId] = {};
+
+    // Process title tokens with higher weight
+    for (const token of titleTokens) {
+      this.documentTerms[docId][token] = (this.documentTerms[docId][token] || 0) + config.FIELD_WEIGHTS.title;
+      this.documentFrequencies[token] = (this.documentFrequencies[token] || 0) + 1;
     }
-    index.get(token)!.set(doc.id, freq);
-  }
-}
 
-function tokenize(text: string): string[] {
-  return text.toLowerCase().split(/\W+/).filter(Boolean);
-}
-
-export function searchIndex(query: string): Map<string | number, number> {
-  const queryTokens = tokenize(query);
-  const results = new Map<string | number, number>();
-
-  if (queryTokens.length === 0) {
-    return results;
+    // Process content tokens
+    for (const token of contentTokens) {
+      this.documentTerms[docId][token] = (this.documentTerms[docId][token] || 0) + config.FIELD_WEIGHTS.content;
+      this.documentFrequencies[token] = (this.documentFrequencies[token] || 0) + 1;
+    }
   }
 
-  const firstToken = queryTokens[0];
-  const initialResults = index.get(firstToken) || new Map();
+  public search(query: string): Map<string | number, number> {
+    const queryTokens = tokenize(query);
+    const scores = new Map<string | number, number>();
 
-  for (const [docId, freq] of initialResults.entries()) {
-    let score = freq;
-    let allTokensFound = true;
+    if (queryTokens.length === 0) {
+      return scores;
+    }
 
-    for (let i = 1; i < queryTokens.length; i++) {
-      const token = queryTokens[i];
-      const tokenDocs = index.get(token);
-      if (tokenDocs && tokenDocs.has(docId)) {
-        score += tokenDocs.get(docId)!;
-      } else {
-        allTokensFound = false;
-        break;
+    // Calculate TF-IDF scores for each document
+    for (const [docId, termFreqs] of Object.entries(this.documentTerms)) {
+      let score = 0;
+      let allTokensFound = true;
+
+      for (const token of queryTokens) {
+        if (!termFreqs[token]) {
+          if (config.ALLOW_PHRASE_SEARCH) {
+            allTokensFound = false;
+            break;
+          }
+          continue;
+        }
+
+        // TF-IDF calculation
+        const tf = termFreqs[token];
+        const df = this.documentFrequencies[token];
+        const idf = Math.log(this.totalDocuments / df);
+        score += tf * idf;
+      }
+
+      if (!config.ALLOW_PHRASE_SEARCH || allTokensFound) {
+        scores.set(docId, score);
       }
     }
 
-    if (allTokensFound) {
-      results.set(docId, score);
-    }
+    return scores;
   }
 
-  return results;
+  public getDocument(id: string | number): SearchDocument | undefined {
+    return this.documents.get(id);
+  }
+
+  public clear(): void {
+    this.documents.clear();
+    this.documentTerms = {};
+    this.documentFrequencies = {};
+    this.totalDocuments = 0;
+  }
 }
 
-export function getDocument(id: string | number): SearchDocument | undefined {
-  return documents.get(id);
-}
+// Export singleton instance
+const index = new SearchIndex();
 
-export function clearIndex(): void {
-  console.log('Clearing index...');
-  index = new Map<string, Map<string | number, number>>();
-  documents = new Map<string | number, SearchDocument>();
-}
+// Export methods
+export const indexDocument = index.indexDocument.bind(index);
+export const searchIndex = index.search.bind(index);
+export const getDocument = index.getDocument.bind(index);
+export const clearIndex = index.clear.bind(index);
