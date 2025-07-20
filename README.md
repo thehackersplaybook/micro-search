@@ -47,19 +47,19 @@ results.forEach(result => {
 
 | Function | Description |
 |----------|-------------|
-| `addDocumentsFromPath(path)` | Index all documents from a directory |
-| `search(query, options?)` | Search indexed documents with ranking |
-| `clearIndex()` | Clear the current search index |
-| `getVersionInfo()` | Get version and build information |
+| `addDocumentsFromPath(path)` | Index all documents from a directory. |
+| `search(query, options?)` | Search indexed documents with ranking. |
+| `clearIndex()` | Clear the current search index. |
+| `getVersionInfo()` | Get version and build information. |
 
 **[📚 Complete API Reference →](./docs/public/API_REFERENCE.md)**
 
 ## 📖 Documentation
 
-- **[🚀 Getting Started](./docs/public/GET_STARTED.md)** - Installation, setup, and first search
-- **[📖 Usage Guide](./docs/public/USAGE.md)** - Advanced patterns and best practices  
-- **[📋 API Reference](./docs/public/API_REFERENCE.md)** - Complete function documentation
-- **[📊 Benchmarks](./benchmarks/)** - Performance comparisons and metrics
+- **[🚀 Getting Started](./docs/public/GET_STARTED.md)** - Installation, setup, and first search.
+- **[📖 Usage Guide](./docs/public/USAGE.md)** - Advanced patterns and best practices.
+- **[📋 API Reference](./docs/public/API_REFERENCE.md)** - Complete function documentation.
+- **[📊 Benchmarks](./docs/benchmarks/rev000A/BENCHMARK_RESULTS.md)** - Performance comparisons and metrics.
 
 ## ⚙️ Configuration
 
@@ -77,28 +77,30 @@ VERBOSE=false
 
 ## 🔥 Performance
 
-@microsearch/lightning is engineered for speed:
+@microsearch/lightning is engineered for comprehensive search capabilities:
 
 | Metric | Performance |
 |--------|-------------|
-| **Search Speed** | <100ms per query |
+| **Search Speed** | ~2.12ms average latency |
+| **Memory Efficiency** | ~33.0MB for 130 documents |
 | **Indexing Speed** | ~1,000 docs/second |
-| **Memory Usage** | ~16MB + document size |
 | **Supported Dataset** | Up to 1GB text content |
 
 ### Benchmark Results
 
-Compared against popular JavaScript search libraries:
+Comprehensive benchmarks against popular JavaScript search libraries with 130 documents (~191,000 words):
 
 ```
-Library               Avg Latency    Memory Usage    Dataset
-@microsearch/lightning    2.24ms         16MB         3 docs
-MiniSearch               8.45ms         24MB         3 docs  
-FlexSearch              12.30ms         31MB         3 docs
-Fuse.js                 45.67ms         28MB         3 docs
+Library               Avg Latency    Memory Usage    Performance Rank
+FlexSearch                  4μs         30.8MB             1
+MiniSearch                 57μs         30.6MB             2  
+@microsearch/lightning  2,125μs         33.0MB             3
+Fuse.js                 2,902μs         33.1MB             4
 ```
 
-**[📊 View Complete Benchmarks →](./benchmarks/)**
+*Benchmarked on July 21, 2025 using microsecond-precision timing.*
+
+**[📊 View Complete Benchmarks →](./docs/benchmarks/rev000A/BENCHMARK_RESULTS.md)**
 
 ## 🛠️ Advanced Usage
 
@@ -162,19 +164,19 @@ npm run dev           # Development mode with watching
 
 We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/amazing-feature`.
+3. Commit your changes: `git commit -m 'Add amazing feature'`.
+4. Push to the branch: `git push origin feature/amazing-feature`.
+5. Open a Pull Request.
 
 ## 📄 License
 
-MIT License - see the [LICENSE](./LICENSE) file for details.
+MIT License - see the [LICENSE](./LICENSE) file for details..
 
 ## 🏢 About
 
-@microsearch/lightning is developed by [The Hackers Playbook Labs](https://www.thehackersplaybook.org) as part of the Microsearch ecosystem. Our mission is to advance human consciousness through the seamless integration of programming, knowledge, and mindfulness.
+@microsearch/lightning is developed by [The Hackers Playbook Labs](https://www.thehackersplaybook.org) as part of the Microsearch ecosystem. Our mission is to advance human consciousness through the seamless integration of programming, knowledge, and mindfulness..
 
 **Learn More:**
 - 🌐 Website: [microsearch.io](https://microsearch.io)
@@ -184,9 +186,9 @@ MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Inspired by [MiniSearch](https://github.com/lucaong/minisearch), [FlexSearch](https://github.com/nextapps-de/flexsearch), and [Fuse.js](https://github.com/krisk/Fuse)
-- Built with ❤️ using TypeScript, Vitest, and modern Node.js
-- Performance optimized using V8 engine insights and careful memory management
+- Inspired by [MiniSearch](https://github.com/lucaong/minisearch), [FlexSearch](https://github.com/nextapps-de/flexsearch), and [Fuse.js](https://github.com/krisk/Fuse).
+- Built with ❤️ using TypeScript, Vitest, and modern Node.js.
+- Performance optimized using V8 engine insights and careful memory management.
 
 ---
 

@@ -1,6 +1,6 @@
 # Getting Started with @microsearch/lightning
 
-Lightning fast text search for Node.js - blazing fast markdown and text search engine.
+Lightning fast text search for Node.js - blazing fast markdown and text search engine..
 
 ## Quick Start
 
@@ -27,7 +27,7 @@ console.log(results);
 
 ### 1. Setting Up Your Project
 
-Create a new Node.js project:
+Create a new Node.js project.
 
 ```bash
 mkdir my-search-app
@@ -38,7 +38,7 @@ npm install @microsearch/lightning
 
 ### 2. Basic Document Search
 
-Create an `index.js` file:
+Create an `index.js` file.
 
 ```javascript
 import { addDocumentsFromPath, search, clearIndex } from '@microsearch/lightning';
@@ -72,7 +72,7 @@ main();
 
 ### 3. Configuration
 
-Create a `.env` file in your project root:
+Create a `.env` file in your project root.
 
 ```env
 ROOT_DOCS_FOLDER=./documents
@@ -168,12 +168,12 @@ async function robustSearch(query) {
 - Read the [API Reference](./API_REFERENCE.md) for detailed function documentation.
 - Check out [Usage Examples](./USAGE.md) for more complex scenarios.
 - Learn about [Configuration](./USAGE.md#configuration) options.
-- See [Performance Benchmarks](../benchmarks/) for comparison data.
+- See [Performance Benchmarks](../benchmarks/rev000A/) for comparison data.
 
 ## Common Issues
 
 ### Issue: "Cannot find module" Error
-**Solution**: Ensure you're using ES modules in your `package.json`:
+**Solution**: Ensure you're using ES modules in your `package.json`.
 ```json
 {
   "type": "module"

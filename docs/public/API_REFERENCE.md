@@ -1,17 +1,17 @@
 # API Reference - @microsearch/lightning
 
-Complete API documentation for the lightning-fast search engine.
+Complete API documentation for the lightning-fast search engine..
 
 ## Core Functions
 
 ### `addDocumentsFromPath(path: string): Promise<void>`
 
-Loads and indexes all markdown and text files from the specified directory path.
+Loads and indexes all markdown and text files from the specified directory path..
 
 **Parameters:**
 - `path` (string): Absolute or relative path to the directory containing documents.
 
-**Returns:** Promise that resolves when indexing is complete.
+**Returns:** Promise that resolves when indexing is complete..
 
 **Example:**
 ```javascript
@@ -27,13 +27,13 @@ await addDocumentsFromPath('/absolute/path/to/docs');
 
 ### `search(query: string, options?: SearchOptions): Promise<SearchResult[]>`
 
-Performs a text search across the indexed documents.
+Performs a text search across the indexed documents..
 
 **Parameters:**
 - `query` (string): The search query string.
 - `options` (SearchOptions, optional): Search configuration options.
 
-**Returns:** Promise resolving to an array of search results, ranked by relevance.
+**Returns:** Promise resolving to an array of search results, ranked by relevance..
 
 **Example:**
 ```javascript
@@ -49,7 +49,7 @@ const weightedResults = await search('API documentation', {
 
 ### `clearIndex(): void`
 
-Clears the current search index, removing all indexed documents.
+Clears the current search index, removing all indexed documents..
 
 **Example:**
 ```javascript
@@ -61,9 +61,9 @@ await addDocumentsFromPath('./new-documents');
 
 ### `getVersionInfo(): VersionInfo`
 
-Returns version and build information about the library.
+Returns version and build information about the library..
 
-**Returns:** VersionInfo object containing version details.
+**Returns:** VersionInfo object containing version details..
 
 **Example:**
 ```javascript
@@ -79,7 +79,7 @@ console.log(`Git Hash: ${info.gitHash}`);
 
 ### `SearchOptions`
 
-Configuration options for search queries.
+Configuration options for search queries..
 
 ```typescript
 interface SearchOptions {
@@ -96,7 +96,7 @@ interface SearchOptions {
 
 ### `SearchResult`
 
-Represents a single search result.
+Represents a single search result..
 
 ```typescript
 interface SearchResult {
@@ -119,7 +119,7 @@ interface SearchResult {
 
 ### `SearchDocument`
 
-Internal representation of an indexed document.
+Internal representation of an indexed document..
 
 ```typescript
 interface SearchDocument {
@@ -134,7 +134,7 @@ interface SearchDocument {
 
 ### `VersionInfo`
 
-Version and build information.
+Version and build information..
 
 ```typescript
 interface VersionInfo {
@@ -152,12 +152,12 @@ interface VersionInfo {
 
 ### `tokenize(text: string): string[]`
 
-Tokenizes text into searchable terms based on configuration.
+Tokenizes text into searchable terms based on configuration..
 
 **Parameters:**
 - `text` (string): Input text to tokenize.
 
-**Returns:** Array of normalized, searchable tokens.
+**Returns:** Array of normalized, searchable tokens..
 
 **Example:**
 ```javascript
@@ -171,13 +171,13 @@ const tokens = tokenize('Hello, World! This is a test.');
 
 ### `generateSnippet(text: string, queryTerms: string[]): string`
 
-Generates a context snippet around matching terms.
+Generates a context snippet around matching terms..
 
 **Parameters:**
 - `text` (string): Source text to extract snippet from.
 - `queryTerms` (string[]): Array of search terms to highlight.
 
-**Returns:** Formatted snippet with highlighted terms.
+**Returns:** Formatted snippet with highlighted terms..
 
 **Example:**
 ```javascript
@@ -194,9 +194,9 @@ const snippet = generateSnippet(
 
 ### `getFullVersionString(): string`
 
-Returns a formatted version string with build information.
+Returns a formatted version string with build information..
 
-**Returns:** Human-readable version string.
+**Returns:** Human-readable version string..
 
 **Example:**
 ```javascript
@@ -210,9 +210,9 @@ console.log(getFullVersionString());
 
 ### `isPreRelease(): boolean`
 
-Checks if the current version is a pre-release.
+Checks if the current version is a pre-release..
 
-**Returns:** Boolean indicating if this is a pre-release version.
+**Returns:** Boolean indicating if this is a pre-release version..
 
 **Example:**
 ```javascript
@@ -227,7 +227,7 @@ if (isPreRelease()) {
 
 ## Configuration
 
-Environment variables that control library behavior:
+Environment variables that control library behavior.
 
 | Variable | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -244,7 +244,7 @@ Environment variables that control library behavior:
 
 ## Error Handling
 
-The library throws specific error types for different failure scenarios:
+The library throws specific error types for different failure scenarios.
 
 ### Document Loading Errors
 ```javascript
@@ -269,7 +269,7 @@ try {
 ```
 
 ### Performance Warnings
-Performance warnings are logged automatically when search operations exceed the configured timeout threshold.
+Performance warnings are logged automatically when search operations exceed the configured timeout threshold..
 
 ---
 
@@ -285,17 +285,17 @@ Performance warnings are logged automatically when search operations exceed the 
 
 ## Browser Compatibility
 
-This library is designed for Node.js environments and uses Node.js-specific APIs. For browser usage, consider:
+This library is designed for Node.js environments and uses Node.js-specific APIs. For browser usage, consider.
 
-1. Using a bundler that provides Node.js polyfills
-2. Server-side rendering with search results
-3. API endpoint integration
+1. Using a bundler that provides Node.js polyfills.
+2. Server-side rendering with search results.
+3. API endpoint integration.
 
 ---
 
 ## TypeScript Support
 
-The library is written in TypeScript and provides full type definitions. No additional `@types` packages are required.
+The library is written in TypeScript and provides full type definitions. No additional `@types` packages are required..
 
 ```typescript
 import type { SearchResult, SearchOptions } from '@microsearch/lightning';

@@ -1,0 +1,47 @@
+{
+  "totalDocuments": 130,
+  "generatedAt": "2025-07-20T23:09:11.532Z",
+  "distribution": [
+    {
+      "size": "small",
+      "type": "tutorial",
+      "count": 30
+    },
+    {
+      "size": "small",
+      "type": "documentation",
+      "count": 20
+    },
+    {
+      "size": "medium",
+      "type": "tutorial",
+      "count": 25
+    },
+    {
+      "size": "medium",
+      "type": "blog",
+      "count": 15
+    },
+    {
+      "size": "large",
+      "type": "documentation",
+      "count": 15
+    },
+    {
+      "size": "large",
+      "type": "blog",
+      "count": 10
+    },
+    {
+      "size": "xlarge",
+      "type": "tutorial",
+      "count": 8
+    },
+    {
+      "size": "xlarge",
+      "type": "documentation",
+      "count": 7
+    }
+  ],
+  "estimatedTotalWords": 191000
+}

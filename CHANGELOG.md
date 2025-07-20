@@ -1,9 +1,9 @@
 # Changelog - @microsearch/lightning
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file..
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)..
 
 ## [Unreleased]
 
@@ -130,13 +130,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Git hooks for code quality enforcement.
 
 ### Performance Benchmarks
-- **Average search latency**: ~2.24ms (tested with 3 documents).
-- **Memory usage**: ~16MB base + document size.
+- **Average search latency**: ~2.12ms (tested with 130 documents, ~191,000 words).
+- **Memory usage**: ~33.0MB for comprehensive dataset.
 - **Indexing speed**: ~1,000 documents per second.
 - **Comparison results**:
-  - Faster than MiniSearch by ~4x.
-  - Competitive with FlexSearch performance.
-  - Significantly faster than Fuse.js by ~20x.
+  - Performance rank: 3rd out of 4 libraries tested.
+  - Competitive with Fuse.js (~2.90ms average).
+  - Measured with microsecond precision for accuracy (July 21, 2025).
 
 ### Technical Specifications
 - **Supported file formats**: Markdown (.md), plain text.
