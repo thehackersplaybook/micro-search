@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "timestamp": "2025-07-20T23:25:15.017Z",
+    "nodeVersion": "v22.15.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "datasets": [],
+  "libraries": {
+    "microsearch-lightning": [
+      {
+        "scenario": "Single Term",
+        "stats": {
+          "min": 80.458,
+          "max": 6920.042,
+          "avg": 4074.62577,
+          "median": 6011.2080000000005,
+          "p90": 6222.875,
+          "p95": 6387.458,
+          "p99": 6920.042
+        },
+        "memoryUsageMB": 27.272857666015625,
+        "iterations": 100
+      },
+      {
+        "scenario": "Two Terms",
+        "stats": {
+          "min": 12.583,
+          "max": 6436.667,
+          "avg": 1563.75661,
+          "median": 26.1875,
+          "p90": 6058.708,
+          "p95": 6171.167,
+          "p99": 6436.667
+        },
+        "memoryUsageMB": 28.32927703857422,
+        "iterations": 100
+      },
+      {
+        "scenario": "Complex Phrases",
+        "stats": {
+          "min": 12.917,
+          "max": 6345.292,
+          "avg": 2025.2012599999998,
+          "median": 40.229,
+          "p90": 6100.5,
+          "p95": 6200.292,
+          "p99": 6345.292
+        },
+        "memoryUsageMB": 27.666610717773438,
+        "iterations": 100
+      },
+      {
+        "scenario": "Common Terms",
+        "stats": {
+          "min": 12.542,
+          "max": 6270.334,
+          "avg": 2091.7500000000005,
+          "median": 1391.1455,
+          "p90": 5949.584,
+          "p95": 6095.583,
+          "p99": 6270.334
+        },
+        "memoryUsageMB": 31.703811645507812,
+        "iterations": 100
+      },
+      {
+        "scenario": "Rare Terms",
+        "stats": {
+          "min": 12.208,
+          "max": 8665.083,
+          "avg": 621.76208,
+          "median": 14.333,
+          "p90": 608.542,
+          "p95": 6024.041,
+          "p99": 8665.083
+        },
+        "memoryUsageMB": 34.10772705078125,
+        "iterations": 100
+      }
+    ],
+    "minisearch": [
+      {
+        "scenario": "Single Term",
+        "stats": {
+          "min": 6.417,
+          "max": 719.292,
+          "avg": 65.35960000000001,
+          "median": 73.4375,
+          "p90": 87.5,
+          "p95": 107.167,
+          "p99": 719.292
+        },
+        "memoryUsageMB": 30.48363494873047,
+        "iterations": 100
+      },
+      {
+        "scenario": "Two Terms",
+        "stats": {
+          "min": 9,
+          "max": 397.042,
+          "avg": 83.85043999999998,
+          "median": 80.25,
+          "p90": 143.291,
+          "p95": 149.875,
+          "p99": 397.042
+        },
+        "memoryUsageMB": 32.05317687988281,
+        "iterations": 100
+      },
+      {
+        "scenario": "Complex Phrases",
+        "stats": {
+          "min": 58.791,
+          "max": 417.583,
+          "avg": 101.46246,
+          "median": 92.562,
+          "p90": 124.667,
+          "p95": 150.375,
+          "p99": 417.583
+        },
+        "memoryUsageMB": 35.92303466796875,
+        "iterations": 100
+      },
+      {
+        "scenario": "Common Terms",
+        "stats": {
+          "min": 1.416,
+          "max": 110.292,
+          "avg": 21.011650000000003,
+          "median": 8.3125,
+          "p90": 59.792,
+          "p95": 65.958,
+          "p99": 110.292
+        },
+        "memoryUsageMB": 39.7197265625,
+        "iterations": 100
+      },
+      {
+        "scenario": "Rare Terms",
+        "stats": {
+          "min": 1,
+          "max": 73.334,
+          "avg": 3.6804,
+          "median": 1.166,
+          "p90": 3.042,
+          "p95": 26.625,
+          "p99": 73.334
+        },
+        "memoryUsageMB": 39.044532775878906,
+        "iterations": 100
+      }
+    ],
+    "flexsearch": [
+      {
+        "scenario": "Single Term",
+        "stats": {
+          "min": 0.875,
+          "max": 330.959,
+          "avg": 8.20796,
+          "median": 1.125,
+          "p90": 5.084,
+          "p95": 29.875,
+          "p99": 330.959
+        },
+        "memoryUsageMB": 32.77954864501953,
+        "iterations": 100
+      },
+      {
+        "scenario": "Two Terms",
+        "stats": {
+          "min": 0.875,
+          "max": 156.792,
+          "avg": 7.540469999999999,
+          "median": 3.9165,
+          "p90": 11.292,
+          "p95": 16.375,
+          "p99": 156.792
+        },
+        "memoryUsageMB": 34.482269287109375,
+        "iterations": 100
+      },
+      {
+        "scenario": "Complex Phrases",
+        "stats": {
+          "min": 0.75,
+          "max": 37.458,
+          "avg": 5.9687399999999995,
+          "median": 1.208,
+          "p90": 20.958,
+          "p95": 21.333,
+          "p99": 37.458
+        },
+        "memoryUsageMB": 38.365753173828125,
+        "iterations": 100
+      },
+      {
+        "scenario": "Common Terms",
+        "stats": {
+          "min": 0.625,
+          "max": 17.833,
+          "avg": 1.47333,
+          "median": 1,
+          "p90": 2.417,
+          "p95": 3.458,
+          "p99": 17.833
+        },
+        "memoryUsageMB": 25.79180908203125,
+        "iterations": 100
+      },
+      {
+        "scenario": "Rare Terms",
+        "stats": {
+          "min": 0.583,
+          "max": 14.125,
+          "avg": 1.01,
+          "median": 0.625,
+          "p90": 1.875,
+          "p95": 2.458,
+          "p99": 14.125
+        },
+        "memoryUsageMB": 40.393707275390625,
+        "iterations": 100
+      }
+    ],
+    "fusejs": [
+      {
+        "scenario": "Single Term",
+        "stats": {
+          "min": 1534.042,
+          "max": 5651.375,
+          "avg": 2800.09206,
+          "median": 3018.0415000000003,
+          "p90": 3394.875,
+          "p95": 3593.875,
+          "p99": 5651.375
+        },
+        "memoryUsageMB": 32.38612365722656,
+        "iterations": 100
+      },
+      {
+        "scenario": "Two Terms",
+        "stats": {
+          "min": 2397.25,
+          "max": 3282.875,
+          "avg": 2723.4469899999995,
+          "median": 2711.6665000000003,
+          "p90": 3053.959,
+          "p95": 3171.958,
+          "p99": 3282.875
+        },
+        "memoryUsageMB": 35.3106689453125,
+        "iterations": 100
+      },
+      {
+        "scenario": "Complex Phrases",
+        "stats": {
+          "min": 2883.666,
+          "max": 6145.166,
+          "avg": 3549.0304199999996,
+          "median": 3223.8959999999997,
+          "p90": 5868.875,
+          "p95": 5959.125,
+          "p99": 6145.166
+        },
+        "memoryUsageMB": 36.62086486816406,
+        "iterations": 100
+      },
+      {
+        "scenario": "Common Terms",
+        "stats": {
+          "min": 1843,
+          "max": 3611.958,
+          "avg": 2613.1346200000007,
+          "median": 2650.5625,
+          "p90": 3010.208,
+          "p95": 3131.875,
+          "p99": 3611.958
+        },
+        "memoryUsageMB": 28.28472137451172,
+        "iterations": 100
+      },
+      {
+        "scenario": "Rare Terms",
+        "stats": {
+          "min": 1396.834,
+          "max": 2877.5,
+          "avg": 2347.7728899999993,
+          "median": 2499.333,
+          "p90": 2706.791,
+          "p95": 2721.417,
+          "p99": 2877.5
+        },
+        "memoryUsageMB": 43.443756103515625,
+        "iterations": 100
+      }
+    ]
+  },
+  "summary": {
+    "documentCount": 130,
+    "scenarios": 5,
+    "libraries": {
+      "microsearch-lightning": {
+        "avgLatency": 2075.4191440000004,
+        "minLatency": 621.76208,
+        "maxLatency": 4074.62577,
+        "avgMemoryUsageMB": 29.81605682373047,
+        "totalIterations": 500
+      },
+      "minisearch": {
+        "avgLatency": 55.07291,
+        "minLatency": 3.6804,
+        "maxLatency": 101.46246,
+        "avgMemoryUsageMB": 35.444821166992185,
+        "totalIterations": 500
+      },
+      "flexsearch": {
+        "avgLatency": 4.8401000000000005,
+        "minLatency": 1.01,
+        "maxLatency": 8.20796,
+        "avgMemoryUsageMB": 34.36261749267578,
+        "totalIterations": 500
+      },
+      "fusejs": {
+        "avgLatency": 2806.695396,
+        "minLatency": 2347.7728899999993,
+        "maxLatency": 3549.0304199999996,
+        "avgMemoryUsageMB": 35.20922698974609,
+        "totalIterations": 500
+      }
+    }
+  }
+}

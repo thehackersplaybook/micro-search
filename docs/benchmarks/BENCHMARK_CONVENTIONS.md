@@ -1,6 +1,6 @@
 # Benchmark Conventions - @microsearch/lightning
 
-This document outlines the versioning and organization conventions for benchmark results in the @microsearch/lightning project.
+This document outlines the versioning and organization conventions for benchmark results in the @microsearch/lightning project..
 
 ## Directory Structure
 
@@ -159,6 +159,7 @@ mkdir "docs/benchmarks/$NEXT_REV"
 | Revision | Date | Description | Key Changes |
 |----------|------|-------------|-------------|
 | rev000A | 2025-07-20 | Initial benchmark implementation | Baseline performance with 130 documents, microsecond precision |
+| rev000B | 2025-07-21 | Performance optimization release | Precomputed IDF, query caching, regex optimization, mixed results (+11.0% avg latency, 3/5 scenarios improved) |
 
 ## Best Practices
 
@@ -197,4 +198,4 @@ diff rev000A/BENCHMARK_RESULTS.md rev000B/BENCHMARK_RESULTS.md
 
 ---
 
-This convention ensures systematic organization of benchmark data while maintaining historical context and enabling easy comparison across different versions and methodologies.
+This convention ensures systematic organization of benchmark data while maintaining historical context and enabling easy comparison across different versions and methodologies..
