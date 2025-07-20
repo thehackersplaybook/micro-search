@@ -8,10 +8,10 @@ export const VERSION_INFO: {
   gitBranch: string;
   releaseType: 'alpha' | 'beta' | 'rc' | 'stable';
 } = {
-  version: '0.0.7',
-  buildDate: '2025-07-20T23:51:28.788Z',
-  gitHash: '816a654f22f24a199a9adba93e77df3caca7b8e4',
-  gitBranch: 'feat/performance-optimization',
+  version: '0.0.8',
+  buildDate: '2025-07-20T23:58:59.208Z',
+  gitHash: 'f7d5fe385d9bd16ac0abb97deed0cb48cf0eed88',
+  gitBranch: 'main',
   releaseType: 'stable'
 };
 
