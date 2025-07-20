@@ -220,6 +220,24 @@ export default VERSION_INFO;`;
     const tagName = `v${this.newVersion}`;
     const tagMessage = `Release ${tagName}`;
     
+    // Check if tag already exists
+    try {
+      await this.execCommand(`git rev-parse ${tagName}`);
+      this.log(`Tag ${tagName} already exists, deleting it...`, 'warning');
+      await this.execCommand(`git tag -d ${tagName}`);
+      
+      // Also try to delete from remote if it exists
+      try {
+        await this.execCommand(`git push origin --delete ${tagName}`);
+        this.log(`Deleted existing tag ${tagName} from remote`, 'info');
+      } catch (error) {
+        this.log(`Remote tag ${tagName} doesn't exist or couldn't be deleted`, 'info');
+      }
+    } catch (error) {
+      // Tag doesn't exist, which is good
+      this.log(`Tag ${tagName} doesn't exist yet, proceeding...`, 'info');
+    }
+    
     await this.execCommand(`git add .`);
     await this.execCommand(`git commit -m "chore: release ${tagName}"`);
     await this.execCommand(`git tag -a ${tagName} -m "${tagMessage}"`);
@@ -256,9 +274,43 @@ export default VERSION_INFO;`;
     }
   }
 
+  async rollbackChanges(error) {
+    this.log('Rolling back changes due to failure...', 'warning');
+    
+    if (this.newVersion && this.originalPackageJson) {
+      try {
+        // Restore original package.json
+        await fs.writeJson(this.packageJsonPath, this.originalPackageJson, { spaces: 2 });
+        this.log('Restored original package.json', 'info');
+        
+        // Remove git tag if it was created
+        const tagName = `v${this.newVersion}`;
+        try {
+          await this.execCommand(`git tag -d ${tagName}`);
+          this.log(`Removed local tag ${tagName}`, 'info');
+        } catch (tagError) {
+          this.log(`Tag ${tagName} was not created locally`, 'info');
+        }
+        
+        // Reset version file if it exists
+        if (await fs.pathExists(this.versionFilePath)) {
+          await fs.remove(this.versionFilePath);
+          this.log('Removed version file', 'info');
+        }
+        
+        this.log('Rollback completed', 'success');
+      } catch (rollbackError) {
+        this.log(`Rollback failed: ${rollbackError.message}`, 'error');
+      }
+    }
+  }
+
   async release(releaseType) {
     try {
       this.releaseType = releaseType;
+      
+      // Save original package.json for rollback
+      this.originalPackageJson = await fs.readJson(this.packageJsonPath);
       
       if (config.dryRun) {
         this.log('DRY RUN MODE - No actual changes will be made', 'warning');
@@ -284,6 +336,11 @@ export default VERSION_INFO;`;
       
     } catch (error) {
       this.log(`Release failed: ${error.message}`, 'error');
+      
+      if (!config.dryRun) {
+        await this.rollbackChanges(error);
+      }
+      
       process.exit(1);
     }
   }
