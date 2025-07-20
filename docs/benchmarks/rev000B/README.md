@@ -72,16 +72,16 @@ The optimizations lay important groundwork for future performance improvements b
 ### 📋 **Technical Details**
 
 **Environment:**
-- Platform: darwin arm64
-- Node.js: v22.15.1
-- Dataset: 130 documents (~191,000 words)
-- Test scenarios: 5 different query types
-- Iterations: 100 per scenario per library
+- Platform: darwin arm64.
+- Node.js: v22.15.1.
+- Dataset: 130 documents (~191,000 words).
+- Test scenarios: 5 different query types.
+- Iterations: 100 per scenario per library.
 
 **Key Technical Changes:**
-- `src/core/indexing.ts`: Added precomputed IDF caching
-- `src/core/tokenizer.ts`: Implemented query caching and regex optimization
-- `src/core/search.ts`: Enhanced query processing pipeline
+- `src/core/indexing.ts`: Added precomputed IDF caching.
+- `src/core/tokenizer.ts`: Implemented query caching and regex optimization.
+- `src/core/search.ts`: Enhanced query processing pipeline.
 
 ### 🎯 **Goals Achieved**
 

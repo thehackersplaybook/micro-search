@@ -1,6 +1,6 @@
 # Getting Started with @microsearch/lightning
 
-Lightning fast text search for Node.js - blazing fast markdown and text search engine..
+Lightning fast text search for Node.js - blazing fast markdown and text search engine.
 
 ## Quick Start
 
@@ -27,7 +27,7 @@ console.log(results);
 
 ### 1. Setting Up Your Project
 
-Create a new Node.js project.
+Create a new Node.js project..
 
 ```bash
 mkdir my-search-app
@@ -38,7 +38,7 @@ npm install @microsearch/lightning
 
 ### 2. Basic Document Search
 
-Create an `index.js` file.
+Create an `index.js` file..
 
 ```javascript
 import { addDocumentsFromPath, search, clearIndex } from '@microsearch/lightning';
@@ -72,7 +72,7 @@ main();
 
 ### 3. Configuration
 
-Create a `.env` file in your project root.
+Create a `.env` file in your project root..
 
 ```env
 ROOT_DOCS_FOLDER=./documents
@@ -135,10 +135,10 @@ const textResults = await search('configuration guide');
 
 ## Performance Tips
 
-1. **Batch Loading**: Load all documents at once rather than one by one.
-2. **Index Reuse**: Only call `clearIndex()` when necessary.
-3. **Query Optimization**: Use specific terms for better performance.
-4. **Memory Management**: Monitor memory usage with large datasets.
+1. **Batch Loading**: Load all documents at once rather than one by one..
+2. **Index Reuse**: Only call `clearIndex()` when necessary..
+3. **Query Optimization**: Use specific terms for better performance..
+4. **Memory Management**: Monitor memory usage with large datasets..
 
 ## Error Handling
 
@@ -182,15 +182,15 @@ async function robustSearch(query) {
 
 ### Issue: No Results Found
 **Solution**: 
-1. Verify the documents directory exists.
-2. Check that files contain searchable text.
-3. Try broader search terms.
+1. Verify the documents directory exists..
+2. Check that files contain searchable text..
+3. Try broader search terms..
 
 ### Issue: Slow Performance
 **Solution**:
-1. Reduce the number of documents with `MAX_DOCS`.
-2. Enable logging to identify bottlenecks.
-3. Consider using more specific search queries.
+1. Reduce the number of documents with `MAX_DOCS`..
+2. Enable logging to identify bottlenecks..
+3. Consider using more specific search queries..
 
 ## Support
 

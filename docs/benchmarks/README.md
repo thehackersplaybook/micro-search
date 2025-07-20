@@ -4,9 +4,9 @@ This directory contains comprehensive benchmark results comparing @microsearch/l
 
 ## 🚀 Latest Results
 
-**Current Revision:** [rev000B](./rev000B/) - Performance Optimization Release  
-**Benchmark Date:** July 21, 2025  
-**Performance Rank:** 3rd out of 4 libraries tested  
+**Current Revision:** [rev000B](./rev000B/) - Performance Optimization Release.  
+**Benchmark Date:** July 21, 2025.  
+**Performance Rank:** 3rd out of 4 libraries tested.  
 
 ### Quick Performance Summary
 

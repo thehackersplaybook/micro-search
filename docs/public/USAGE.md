@@ -1,6 +1,6 @@
 # Usage Guide - @microsearch/lightning
 
-Comprehensive usage examples and patterns for the lightning-fast search engine..
+Comprehensive usage examples and patterns for the lightning-fast search engine.
 
 ## Basic Usage Patterns
 
@@ -537,4 +537,4 @@ await addDocumentsFromPath('./docs');
 const results = await search('debug query');
 ```
 
-This will output detailed timing information, document counts, and internal processing steps..
+This will output detailed timing information, document counts, and internal processing steps.
