@@ -1,0 +1,38 @@
+[
+  {
+    "library": "micro-search",
+    "datasetSize": 0,
+    "avgLatency": 0.0011159649999999872,
+    "medianLatency": 0.000834,
+    "p99Latency": 0.002959,
+    "memoryUsageMB": 13.280532836914062,
+    "timestamp": "2025-07-20T22:08:41.251Z"
+  },
+  {
+    "library": "minisearch",
+    "datasetSize": 0,
+    "avgLatency": 0.0019939039999999947,
+    "medianLatency": 0.001209,
+    "p99Latency": 0.005708,
+    "memoryUsageMB": 15.967269897460938,
+    "timestamp": "2025-07-20T22:08:41.254Z"
+  },
+  {
+    "library": "flexsearch",
+    "datasetSize": 0,
+    "avgLatency": 0.0016209029999999895,
+    "medianLatency": 0.000667,
+    "p99Latency": 0.002334,
+    "memoryUsageMB": 17.31383514404297,
+    "timestamp": "2025-07-20T22:08:41.256Z"
+  },
+  {
+    "library": "fuse.js",
+    "datasetSize": 0,
+    "avgLatency": 0.0012468379999999908,
+    "medianLatency": 0.000792,
+    "p99Latency": 0.005208,
+    "memoryUsageMB": 11.216842651367188,
+    "timestamp": "2025-07-20T22:08:41.258Z"
+  }
+]
