@@ -8,9 +8,9 @@ export const VERSION_INFO: {
   gitBranch: string;
   releaseType: 'alpha' | 'beta' | 'rc' | 'stable';
 } = {
-  version: '0.0.5',
-  buildDate: '2025-07-20T22:47:54.481Z',
-  gitHash: '7bd01101bc65c2849401d114b350cf86eb995f3f',
+  version: '0.0.6',
+  buildDate: '2025-07-20T23:21:01.580Z',
+  gitHash: 'ca9a94154194c7dcb773ccb5b66518ccc692e080',
   gitBranch: 'main',
   releaseType: 'stable'
 };
