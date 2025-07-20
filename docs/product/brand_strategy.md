@@ -55,7 +55,7 @@
 
 ### 4.4 **Performance Beyond Limits**
 
-- Microsearch is obsessed with performance: microsecond search, massive scale, zero compromise.
+- Microsearch is obsessed with performance: millisecond search, massive scale, zero compromise.
 - Metrics, benchmarking, and continuous optimization are at the heart of the platform.
 
 ### 4.5 **Universal, Inclusive, and Human-Centric**
@@ -87,11 +87,11 @@
 
 - **Tone:** Empowering, optimistic, visionary, technically rigorous, and never arrogant.
 - **Language:** Clear, concise, and free of jargon (unless context requires).
-- **Metaphors:** Speed (microseconds), scale (planetary, universal), foundation (bedrock), enlightenment (illumination/discovery).
+- **Metaphors:** Speed (milliseconds), scale (planetary, universal), foundation (bedrock), enlightenment (illumination/discovery).
 
 **Key Phrases/Ideas:**
 
-- “Planet-scale search, microsecond speed.”
+- "Planet-scale search, millisecond speed."
 - “Built for now, engineered for the next 100 years.”
 - “Open source. Planet scale. Lightning fast.”
 - “Search for the next era of human knowledge.”
@@ -159,7 +159,7 @@
 
 ## 12. **Taglines & One-Liners**
 
-- **“Planet-scale search, microsecond speed.”**
+- **"Planet-scale search, millisecond speed."**
 - **“Open source. Lightning fast. Ready for tomorrow.”**
 - **“Find. Discover. Build. At the speed of thought.”**
 - **“Search, reimagined for the next 100 years.”**
