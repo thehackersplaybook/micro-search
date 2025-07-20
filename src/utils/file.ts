@@ -1,3 +1,4 @@
+import { SearchDocument } from '../core/search';
 import fs from 'fs-extra';
 import path from 'path';
 import fastglob from 'fast-glob';
@@ -6,9 +7,8 @@ import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import strip from 'strip-markdown';
 import matter from 'gray-matter';
-import { info, debug } from '../logger';
 
-export async function loadDocuments(rootDir: string): Promise<any[]> {
+export async function loadDocuments(rootDir: string): Promise<SearchDocument[]> {
   const files = await fastglob('**/*.md', { cwd: rootDir });
   const documents = [];
 

@@ -1,6 +1,6 @@
 import { addDocumentsFromPath, search } from '../src/core/search';
 import config from '../src/config';
-import { info, debug, error } from '../src/logger';
+import { info, error } from '../src/logger';
 import fs from 'fs-extra';
 import path from 'path';
 

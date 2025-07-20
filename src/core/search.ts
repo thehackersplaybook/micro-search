@@ -25,8 +25,7 @@ export async function addDocumentsFromPath(path: string): Promise<void> {
 }
 
 export async function search(
-  query: string,
-  opts?: any
+  query: string
 ): Promise<SearchResult[]> {
   const scoredDocIds = searchIndex(query);
   const results: SearchResult[] = [];
