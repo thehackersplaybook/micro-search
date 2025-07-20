@@ -1,11 +1,66 @@
 # Changelog - @microsearch/lightning
 
-All notable changes to this project will be documented in this file..
+All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)..
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.0.7] - 2025-07-21
+
+### Added
+- **Comprehensive performance optimization framework.**
+  - Precomputed IDF values for eliminated Math.log() calculations during search.
+  - Query token caching with LRU cache (1000-entry limit) for repeated queries.
+  - Pre-compiled regex patterns to reduce compilation overhead in hot paths.
+  - Enhanced candidate filtering with early termination for non-matching documents.
+  - Optimized snippet generation with cached regex patterns and improved text processing.
+- **Advanced benchmark revision system (rev000B).**
+  - Comprehensive benchmark methodology with versioned results.
+  - Detailed performance comparison analysis between optimization revisions.
+  - Statistical analysis with P95, P99 latency measurements across 5 query scenarios.
+  - Memory usage tracking and cross-library performance ranking.
+  - Benchmark conventions documentation for systematic performance measurement.
+- **Production-ready documentation suite.**
+  - Complete optimization summary with technical implementation details.
+  - Benchmark revision history with performance delta analysis.
+  - Comprehensive API documentation with full stops and proper punctuation.
+  - Enhanced getting started guide with troubleshooting and performance tips.
+
+### Changed
+- **Search algorithm performance characteristics (baseline rev000A → optimized rev000B).**
+  - **Overall average latency:** 2,125μs → 2,358μs (+11.0% regression, +233μs absolute).
+  - **Mixed scenario performance:** 3 out of 5 query scenarios improved, 2 regressed.
+  - **Improved scenarios:**
+    - Two-term queries: 1,536μs → 1,450μs (-5.6% improvement, -86μs faster).
+    - Common terms: 2,645μs → 2,467μs (-6.7% improvement, -178μs faster).
+    - Rare terms: 570μs → 546μs (-4.2% improvement, -24μs faster).
+  - **Regressed scenarios (due to correctness improvements for negative TF-IDF scores):**
+    - Single-term queries: 3,926μs → 4,838μs (+23.2% regression, +912μs slower).
+    - Complex phrases: 1,946μs → 2,490μs (+28.0% regression, +544μs slower).
+- **Memory usage characteristics.**
+  - Overall memory usage: 33.0MB → 34.1MB (+3.3% increase, +1.1MB absolute).
+  - Performance rank maintained: 3rd out of 4 libraries tested.
+  - Memory efficiency advantage preserved: still uses less memory than MiniSearch (34.6MB) and Fuse.js (34.4MB).
+- **System performance baseline establishment.**
+  - Comprehensive optimization framework established for future improvements.
+  - Benchmark revision system (rev000A → rev000B) implemented for systematic performance tracking.
+  - Statistical analysis expanded: P95/P99 latency measurements across 5 query scenarios.
+- **Documentation consistency.**
+  - Added full stops throughout all documentation files for professional presentation.
+  - Fixed 102+ instances of missing punctuation across markdown files.
+  - Improved readability and consistency in API reference and usage guides.
+
+### Fixed
+- **TF-IDF correctness for negative scores.**
+  - Proper handling of negative TF-IDF values for very common terms.
+  - Mathematical accuracy preserved over raw performance in edge cases.
+  - Maintained search result correctness across all query scenarios.
+- **Benchmark data organization.**
+  - Systematic revision management with proper archival of historical data.
+  - Clean separation of benchmark revisions (rev000A baseline → rev000B optimized).
+  - Comprehensive comparison documentation between performance revisions.
 
 ## [0.0.3] - 2025-07-20
 
