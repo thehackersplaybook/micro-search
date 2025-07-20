@@ -14,22 +14,31 @@ interface DocumentTerms {
   [docId: string]: TermFrequency;
 }
 
+interface PrecomputedIDF {
+  [term: string]: number;
+}
+
 class SearchIndex {
   private documents: Map<string | number, SearchDocument>;
   private documentTerms: DocumentTerms;
   private documentFrequencies: DocumentFrequency;
+  private precomputedIDF: PrecomputedIDF;
   private totalDocuments: number;
+  private idfNeedsUpdate: boolean;
 
   constructor() {
     this.documents = new Map();
     this.documentTerms = {};
     this.documentFrequencies = {};
+    this.precomputedIDF = {};
     this.totalDocuments = 0;
+    this.idfNeedsUpdate = false;
   }
 
   public indexDocument(doc: SearchDocument): void {
     this.documents.set(doc.id, doc);
     this.totalDocuments++;
+    this.idfNeedsUpdate = true;
 
     // Calculate term frequencies for title and content
     const titleTokens = tokenize(doc.title);
@@ -52,36 +61,60 @@ class SearchIndex {
     }
   }
 
+  private updatePrecomputedIDF(): void {
+    if (!this.idfNeedsUpdate) return;
+    
+    this.precomputedIDF = {};
+    for (const [term, df] of Object.entries(this.documentFrequencies)) {
+      this.precomputedIDF[term] = Math.log(this.totalDocuments / df);
+    }
+    this.idfNeedsUpdate = false;
+  }
+
   public search(query: string): Map<string | number, number> {
-    const queryTokens = tokenize(query);
+    const queryTokens = tokenize(query, true); // Enable query caching
     const scores = new Map<string | number, number>();
 
     if (queryTokens.length === 0) {
       return scores;
     }
 
-    // Calculate TF-IDF scores for each document
-    for (const [docId, termFreqs] of Object.entries(this.documentTerms)) {
+    // Ensure IDF values are up to date
+    this.updatePrecomputedIDF();
+
+    // Pre-filter documents more efficiently using inverted index approach
+    const candidateDocIds: string[] = [];
+    
+    // Always find union of documents containing any term first
+    const candidateSet = new Set<string>();
+    for (const token of queryTokens) {
+      for (const [docId, termFreqs] of Object.entries(this.documentTerms)) {
+        if (termFreqs[token]) {
+          candidateSet.add(docId);
+        }
+      }
+    }
+    candidateDocIds.push(...candidateSet);
+
+    // Calculate TF-IDF scores for candidate documents only
+    for (const docId of candidateDocIds) {
+      const termFreqs = this.documentTerms[docId];
       let score = 0;
-      let allTokensFound = true;
+      let hasAllTokens = true;
 
       for (const token of queryTokens) {
-        if (!termFreqs[token]) {
-          if (config.ALLOW_PHRASE_SEARCH) {
-            allTokensFound = false;
-            break;
-          }
-          continue;
-        }
-
-        // TF-IDF calculation
         const tf = termFreqs[token];
-        const df = this.documentFrequencies[token];
-        const idf = Math.log(this.totalDocuments / df);
-        score += tf * idf;
+        if (tf) {
+          const idf = this.precomputedIDF[token];
+          score += tf * idf;
+        } else if (config.ALLOW_PHRASE_SEARCH) {
+          hasAllTokens = false;
+          break;
+        }
       }
 
-      if (!config.ALLOW_PHRASE_SEARCH || allTokensFound) {
+      // Include document if it meets phrase search requirements (score can be negative for very common terms)
+      if (!config.ALLOW_PHRASE_SEARCH || hasAllTokens) {
         scores.set(docId, score);
       }
     }
@@ -97,7 +130,9 @@ class SearchIndex {
     this.documents.clear();
     this.documentTerms = {};
     this.documentFrequencies = {};
+    this.precomputedIDF = {};
     this.totalDocuments = 0;
+    this.idfNeedsUpdate = false;
   }
 }
 

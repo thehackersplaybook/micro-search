@@ -46,7 +46,7 @@ export async function addDocumentsFromPath(path: string): Promise<void> {
 
 export async function search(query: string, options: SearchOptions = {}): Promise<SearchResult[]> {
   const startTime = process.hrtime.bigint();
-  const queryTokens = tokenize(query);
+  const queryTokens = tokenize(query, true); // Enable query caching
   const scoredDocIds = searchIndex(query);
   const results: SearchResult[] = [];
 
